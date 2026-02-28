@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: stg_pokemon
+    description: "Datos de Pokemon limpiados desde la API"
+    tests:
+      - dbt_expectations.expect_table_row_count_to_be_between:
+          min_value: 1
+          max_value: 2000
+    columns:
+      - name: pokemon_id
+        description: "ID único del Pokemon"
+        tests:
+          - unique
+          - not_null
+      - name: pokemon_name
+        description: "Nombre del Pokemon"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: "^[a-zA-Z0-9\\-]+$"
+
+  - name: stg_openweather
+    description: "Datos del clima de OpenWeather"
+    columns:
+      - name: zona_horaria
+        description: "Zona horaria de la extracción"
+        tests:
+          - not_null

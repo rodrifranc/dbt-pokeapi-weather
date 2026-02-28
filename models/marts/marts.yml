@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: obt_pokemon
+    description: "One Big Table con todos los datos de Pokemon y el clima actual."
+    columns:
+      - name: pokemon_id
+        description: "Identificador único del Pokemon"
+        tests:
+          - unique
+          - not_null
+      - name: power_tier
+        description: "Clasificación de poder basada en base_experience"
+        tests:
+          - accepted_values:
+              values: ['Legendary', 'Strong', 'Normal']
+      - name: base_experience
+        description: "Experiencia base del pokemon"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 1000
