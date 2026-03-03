@@ -13,3 +13,7 @@ Try running the following commands:
 - Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
 - Find [dbt events](https://events.getdbt.com) near you
 - Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+
+### DAG´s requeridos para las tareas en adjunto
+- Dbt project.PNG es de la tarea 5
+- DBT project con test.PNG es de la tarea 6
